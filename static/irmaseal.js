@@ -1,5 +1,5 @@
-import irmaFrontend from "@privacybydesign/irma-frontend";
-import init, {encrypt, decrypt, extract_timestamp} from "./wasm.js";
+import { newWeb, newPopup } from "./irma.js";
+import init, { encrypt, decrypt, extract_timestamp } from "./wasm.js";
 
 class Client {
   // Don't use the constructor -- use Client.build().
@@ -55,7 +55,7 @@ class Client {
 
   // 1) Start IRMA session, resulting in a token
   requestToken(whose) {
-    return irmaFrontend
+    return irma
       .newPopup({
         session: {
           url: this.url,
